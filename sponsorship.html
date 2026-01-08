@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsorship - Worshipper's Praise Incorporated</title>
+    <link rel="stylesheet" href="Assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .proposal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .proposal-card {
+            background-color: var(--base-neutral-color);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .proposal-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .proposal-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .proposal-info {
+            padding: 30px;
+        }
+
+        .proposal-info h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html"><img src="Assets/Logo/wpi white.png" alt="Worshipper's Praise Incorporated Logo" loading="lazy"><span>Worshipper's Praise Inc</span></a></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="discography.html">Music</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="training.html">Training</a></li>
+                <li><a href="sponsorship.html">Sponsorship</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="sponsorship-hero" class="hero-section">
+        <div class="hero-parallax-wrapper">
+            <img src="Assets/Pictures/Cover (6).jpg" alt="People holding hands in a circle, symbolizing partnership and unity." loading="lazy">
+            <div class="hero-content">
+                <h1>Partner With Us</h1>
+                <p>Support our mission to spread the Gospel through music.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="sponsorship-downloads" class="light-bg reveal-on-scroll">
+        <div class="container">
+            <h2 style="text-align: center;">Sponsorship Proposals</h2>
+            <p style="text-align: center;">Download our sponsorship proposals to learn more about how you can partner with us.</p>
+            <div class="proposal-grid">
+                <div class="proposal-card">
+                    <img src="Assets/Sponsorship Proposals/POWPI Proposal_pages-to-jpg-0001.jpg" alt="Individual Sponsorship Proposal Thumbnail">
+                    <div class="proposal-info">
+                        <h3>Individual Sponsorship</h3>
+                        <a href="Assets/Sponsorship Proposals/POWPI Proposal.pdf" class="btn btn-filled" download>Read Individual Sponsorship Proposal</a>
+                    </div>
+                </div>
+                <div class="proposal-card">
+                    <img src="Assets/Sponsorship Proposals/SPONSORSHIP proposal_pages-to-jpg-0001.jpg" alt="Organizational Sponsorship Proposal Thumbnail">
+                    <div class="proposal-info">
+                        <h3>Organizational Sponsorship</h3>
+                        <a href="Assets/Sponsorship Proposals/Sponsorship proposal.pdf" class="btn btn-tonal" download>Read Organizational Sponsorship Proposal</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-section">
+                <h4>Worshipper's Praise Inc.</h4>
+                <p>A worldwide ministry that turns the hearts of a myriad of people towards Jesus Christ.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Main Menu</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="discography.html">Music</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="training.html">Training</a></li>
+                    <li><a href="sponsorship.html">Sponsorship</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="social-media-icons">
+                    <a href="https://web.facebook.com/wpighana" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/wpighana" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@wpighana" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@wpighana" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://x.com/wpighana" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Worshipper's Praise Incorporated. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="Assets/script.js"></script>
+</body>
+</html>
