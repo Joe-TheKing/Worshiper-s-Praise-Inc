@@ -1781,9 +1781,26 @@ nav ul.nav-links li a {
 .album-info p {
     margin: 5px 0 0;
     color: white;
+    margin-bottom: 10px;
+    /* Add some space before buttons */
 }
 
+/* Streaming Links Container */
+.streaming-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
 
+/* Smaller buttons for the multiple streaming links */
+.streaming-links .btn {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+    flex-grow: 1;
+    /* Allow buttons to grow to fill space if needed */
+    justify-content: center;
+}
 
 /* Gallery Page Specific Styles */
 #gallery-albums .album-grid {
