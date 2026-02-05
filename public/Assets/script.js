@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Page Transitions
     const allLinks = document.querySelectorAll('a');
     allLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
             // Check if it's a valid, non-anchor link
             if (href && href !== '#' && !href.startsWith('mailto:') && !href.startsWith('tel:') && this.getAttribute('target') !== '_blank') {
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
             const name = contactForm.querySelector('input[type="text"]');
             const email = contactForm.querySelector('input[type="email"]');
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
+        newsletterForm.addEventListener('submit', function (e) {
             e.preventDefault();
             const email = newsletterForm.querySelector('input[type="email"]');
             if (email.value.trim() === '' || !/\S+@\S+\.\S+/.test(email.value)) {
@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const searchForm = document.getElementById('search-form');
     if (searchForm) {
-        searchForm.addEventListener('submit', function(e) {
+        searchForm.addEventListener('submit', function (e) {
             const searchInput = searchForm.querySelector('input[type="search"]');
             if (searchInput.value.trim() === '') {
                 e.preventDefault();
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Minimalist Line Audio Player Functionality (v2 - Bug Fix)
     const audioPlayer = document.getElementById('audio-player');
     const playSnippetButtons = document.querySelectorAll('.btn-play-snippet');
-    
+
     let active = {
         button: null,
         line: null
@@ -452,6 +452,152 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    
-});
 
+    // Album Carousel Logic
+    const albumCarouselContainer = document.querySelector('.album-carousel-container');
+    if (albumCarouselContainer) {
+        const track = albumCarouselContainer.querySelector('.album-carousel');
+        const slides = Array.from(track.children);
+        const nextButton = albumCarouselContainer.querySelector('.next-btn');
+        const prevButton = albumCarouselContainer.querySelector('.prev-btn');
+        const dotsNav = albumCarouselContainer.querySelector('.carousel-dots');
+
+        let currentIndex = 0;
+        let startX = 0;
+        let isDragging = false;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        let animationID;
+
+        // Create dots
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+            });
+            dotsNav.appendChild(dot);
+        });
+
+        const dots = Array.from(dotsNav.children);
+
+        function updateSlideClasses(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (window.innerWidth < 769 && i === index) {
+                    slide.classList.add('active');
+                } else if (window.innerWidth >= 769) {
+                    // Determine "active" for desktop (maybe the middle one or just all visible)
+                    // For 3-up view, maybe just keep them all opaque or handle simplistic "active"
+                    slide.classList.add('active');
+                }
+            });
+        }
+
+        function getSlideWidth() {
+            return slides[0].getBoundingClientRect().width;
+        }
+
+        function setPositionByIndex() {
+            // For desktop (3 slides visible), we might slide 1 by 1 or 3 by 3.
+            // Let's slide 1 by 1 for smoothness.
+            if (window.innerWidth >= 769) {
+                // Prevent sliding past the end appropriately
+                // If we have 3 visible, max index is length - 3
+                if (currentIndex > slides.length - 3) currentIndex = 0; // Loop or clamp? Let's loop.
+                if (currentIndex < 0) currentIndex = slides.length - 3;
+            } else {
+                if (currentIndex >= slides.length) currentIndex = 0;
+                if (currentIndex < 0) currentIndex = slides.length - 1;
+            }
+
+            currentTranslate = currentIndex * -getSlideWidth();
+            prevTranslate = currentTranslate;
+            setSliderPosition();
+            updateDots(currentIndex);
+            updateSlideClasses(currentIndex);
+        }
+
+        function setSliderPosition() {
+            track.style.transform = `translateX(${currentTranslate}px)`;
+        }
+
+        function updateDots(index) {
+            dots.forEach(dot => dot.classList.remove('active'));
+            // Handle desktop group dots logic if needed, but for now 1-to-1 map is simple
+            if (dots[index]) dots[index].classList.add('active');
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            setPositionByIndex();
+        }
+
+        nextButton.addEventListener('click', () => {
+            currentIndex++;
+            setPositionByIndex();
+        });
+
+        prevButton.addEventListener('click', () => {
+            currentIndex--;
+            setPositionByIndex();
+        });
+
+        // Touch / Drag Events
+        track.addEventListener('touchstart', touchStart(0), { passive: true });
+        track.addEventListener('touchend', touchEnd);
+        track.addEventListener('touchmove', touchMove, { passive: true });
+
+        track.addEventListener('mousedown', touchStart(1));
+        track.addEventListener('mouseup', touchEnd);
+        track.addEventListener('mouseleave', () => { if (isDragging) touchEnd() });
+        track.addEventListener('mousemove', touchMove);
+
+        function touchStart(type) {
+            return function (event) {
+                isDragging = true;
+                startX = type === 0 ? event.touches[0].clientX : event.clientX;
+                animationID = requestAnimationFrame(animation);
+                track.classList.add('grabbing');
+            }
+        }
+
+        function touchMove(event) {
+            if (isDragging) {
+                const currentPosition = event.type.includes('touch') ? event.touches[0].clientX : event.clientX;
+                const currentDiff = currentPosition - startX;
+                currentTranslate = prevTranslate + currentDiff;
+            }
+        }
+
+        function touchEnd() {
+            isDragging = false;
+            cancelAnimationFrame(animationID);
+            track.classList.remove('grabbing');
+
+            const movedBy = currentTranslate - prevTranslate;
+
+            // If moved enough, change slide
+            if (movedBy < -100) currentIndex++;
+            if (movedBy > 100) currentIndex--;
+
+            setPositionByIndex();
+        }
+
+        function animation() {
+            setSliderPosition();
+            if (isDragging) requestAnimationFrame(animation);
+        }
+
+        // Initialize
+        updateSlideClasses(0);
+        window.addEventListener('resize', () => {
+            // Reset on resize to avoid position issues
+            currentIndex = 0;
+            setPositionByIndex();
+        });
+    }
+
+
+});

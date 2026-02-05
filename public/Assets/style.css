@@ -1129,16 +1129,30 @@ nav ul.nav-links li a {
         position: fixed;
         right: 0px;
         height: 100vh;
-        top: 68px;
-        /* Adjust based on header height */
+        top: 0;
+        /* Full screen */
         background-color: rgba(46, 46, 46, 0.95);
+        backdrop-filter: blur(15px);
+        /* Glassmorphism */
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 50%;
+        justify-content: center;
+        /* Center items vertically */
+        width: 100%;
+        /* Full width */
         transform: translateX(100%);
-        transition: transform 0.5s ease-in;
-        padding-top: 40px;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        padding-top: 0;
+        z-index: 998;
+        /* Below hamburger z-index usually, but hamburger is inside nav... */
+    }
+
+    /* Ensure hamburger is above the full-screen menu */
+    .hamburger {
+        display: block;
+        z-index: 999;
+        position: relative;
     }
 
     .nav-links.nav-active {
@@ -1147,11 +1161,16 @@ nav ul.nav-links li a {
 
     nav ul.nav-links li {
         opacity: 0;
-        margin: 20px 0;
+        margin: 25px 0;
+        /* More spacing */
     }
 
-    .hamburger {
-        display: block;
+    nav ul.nav-links li a {
+        font-size: 1.5rem;
+        /* Larger font for touch */
+        font-weight: 700;
+        color: var(--md-sys-color-background);
+        letter-spacing: 1px;
     }
 
     nav ul:not(.nav-links) {
@@ -1505,15 +1524,26 @@ nav ul.nav-links li a {
 
 @media screen and (max-width: 480px) {
     .hero-content h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        line-height: 1.2;
     }
 
     .hero-content p {
         font-size: 1rem;
+        padding: 0 10px;
     }
 
     section h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        margin-bottom: 40px;
+    }
+
+    section {
+        padding: 40px 0;
+    }
+
+    .container {
+        padding: 0 16px;
     }
 
     .discography-grid {
@@ -1550,6 +1580,39 @@ nav ul.nav-links li a {
 
     .testimonial-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* Mobile Button & Touch Targets */
+    .btn {
+        padding: 12px 24px;
+        /* Larger touch target */
+        width: 100%;
+        /* Full width buttons on mobile */
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .btn-play-snippet {
+        padding: 15px;
+        /* Larger play button */
+        width: 100%;
+    }
+
+    /* Hero adjustments */
+    .hero-section {
+        height: auto;
+        min-height: 85vh;
+        /* Allow content to grow */
+    }
+
+    .hero-content {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin: 100px 20px 40px 20px;
+        /* Spacing from top header */
+        width: auto;
     }
 }
 
