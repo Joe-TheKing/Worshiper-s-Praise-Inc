@@ -1,15 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Play, Pause } from 'lucide-react';
 import Layout from '../components/layout/Layout';
 import ScrollReveal from '../components/ui/ScrollReveal';
+import Hero from '../components/ui/Hero';
+import AlbumCard from '../components/ui/AlbumCard';
 
-// Albums data with full streaming links
+// Albums data
 const albums = [
     {
         title: "Hallowed",
-        year: "2024",
-        description: 'Our latest single "Hallowed".',
         image: "/Assets/Album Art/Hallowed.jpg",
         audioSrc: "/Assets/Preview/Preview - Hallowed - WPI.mpga",
         links: [
@@ -21,8 +20,6 @@ const albums = [
     },
     {
         title: "Mmrane",
-        year: "2024",
-        description: "A powerful song of praise.",
         image: "/Assets/Album Art/Mmrane.jpg",
         audioSrc: "/Assets/Preview/Preview - Mmrane - WPI.mp3",
         links: [
@@ -34,8 +31,6 @@ const albums = [
     },
     {
         title: "Northern Praise Medley",
-        year: "2024",
-        description: "A medley of uplifting praise songs from the north.",
         image: "/Assets/Album Art/Northen Praise Medley.jpg",
         audioSrc: "/Assets/Preview/Preview - Northen Praise Medley - WPI.mp3",
         links: [
@@ -47,76 +42,15 @@ const albums = [
     },
 ];
 
-// Album Card
-const AlbumCard = ({ album }) => {
-    const [isPlaying, setIsPlaying] = useState(false);
-    const audioRef = useRef(null);
-
-    const togglePlay = () => {
-        if (!audioRef.current) return;
-        if (isPlaying) {
-            audioRef.current.pause();
-        } else {
-            audioRef.current.play();
-        }
-        setIsPlaying(!isPlaying);
-    };
-
-    useEffect(() => {
-        const audio = audioRef.current;
-        if (audio) {
-            const handleEnded = () => setIsPlaying(false);
-            audio.addEventListener('ended', handleEnded);
-            return () => audio.removeEventListener('ended', handleEnded);
-        }
-    }, []);
-
-    return (
-        <div className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-            <div className="relative h-64 overflow-hidden">
-                <img src={album.image} alt={album.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-xl font-bold text-white">{album.title}</h3>
-                    <p className="text-white/80 text-sm">Released: {album.year}</p>
-                </div>
-            </div>
-            <div className="p-6">
-                <p className="text-gray-600 text-sm mb-4">{album.description}</p>
-                <button
-                    onClick={togglePlay}
-                    className="flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full mb-4 hover:bg-primary/20 transition-colors w-full justify-center"
-                >
-                    {isPlaying ? <Pause size={16} /> : <Play size={16} />}
-                    <span className="text-sm font-medium">{isPlaying ? 'Pause Snippet' : 'Play Snippet'}</span>
-                </button>
-                <audio ref={audioRef} src={album.audioSrc} preload="none" />
-                <div className="flex flex-wrap gap-2">
-                    {album.links.map((link, i) => (
-                        <a key={i} href={link.url} target="_blank" rel="noreferrer" className="flex items-center gap-1 px-3 py-1.5 border border-primary/30 text-primary rounded-full text-xs font-medium hover:bg-primary hover:text-white transition-colors">
-                            <i className={link.icon}></i> {link.name}
-                        </a>
-                    ))}
-                </div>
-            </div>
-        </div>
-    );
-};
-
 const MusicPage = () => {
     return (
         <Layout>
-            {/* Hero */}
-            <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center text-center text-white overflow-hidden">
-                <div className="absolute inset-0 z-0">
-                    <img src="/Assets/Pictures/Cover (5).jpg" alt="Our Music" className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-black/50" />
-                </div>
-                <div className="relative z-10 container mx-auto px-4">
-                    <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">Our Music</h1>
-                    <p className="text-lg md:text-xl opacity-90 drop-shadow-md">Explore our collection of albums and songs.</p>
-                </div>
-            </section>
+            {/* Hero Section */}
+            <Hero
+                title="Our Music"
+                description="Explore our collection of albums and songs."
+                image="/Assets/Pictures/Cover (5).jpg"
+            />
 
             {/* Discography */}
             <section className="py-20 bg-white">

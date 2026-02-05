@@ -1,8 +1,10 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Play, Pause, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Layout from '../components/layout/Layout';
 import ScrollReveal from '../components/ui/ScrollReveal';
+import Hero from '../components/ui/Hero';
+import AlbumCard from '../components/ui/AlbumCard';
 
 // Testimonials data
 const testimonials = [
@@ -28,90 +30,30 @@ const testimonials = [
 const albums = [
     {
         title: "Hallowed",
-        description: 'Listen to our latest release "Hallowed".',
         image: "/Assets/Album Art/Hallowed.jpg",
         audioSrc: "/Assets/Preview/Preview - Hallowed - WPI.mpga",
-        links: {
-            spotify: "https://open.spotify.com/track/1EsLPqdudynNnaySrdHtIc",
-            apple: "https://music.apple.com/us/album/hallowed/1854125689?i=1854125692"
-        }
+        links: [
+            { name: "Spotify", url: "https://open.spotify.com/track/1EsLPqdudynNnaySrdHtIc", icon: "fab fa-spotify" },
+            { name: "Apple Music", url: "https://music.apple.com/us/album/hallowed/1854125689?i=1854125692", icon: "fab fa-apple" }
+        ]
     },
     {
         title: "Mmrane",
-        description: "Listen to our latest single, a powerful song of praise.",
         image: "/Assets/Album Art/Mmrane.jpg",
         audioSrc: "/Assets/Preview/Preview - Mmrane - WPI.mp3",
-        links: {
-            spotify: "https://open.spotify.com/track/5SjbEWhFWZW0UN4egWhMjR"
-        }
+        links: [
+            { name: "Spotify", url: "https://open.spotify.com/track/5SjbEWhFWZW0UN4egWhMjR", icon: "fab fa-spotify" }
+        ]
     },
     {
         title: "Northern Praise Medley",
-        description: "A medley of uplifting praise songs from the north.",
         image: "/Assets/Album Art/Northen Praise Medley.jpg",
         audioSrc: "/Assets/Preview/Preview - Northen Praise Medley - WPI.mp3",
-        links: {
-            spotify: "https://open.spotify.com/album/50RJIs6DZFT7fBAieZjvKQ"
-        }
+        links: [
+            { name: "Spotify", url: "https://open.spotify.com/album/50RJIs6DZFT7fBAieZjvKQ", icon: "fab fa-spotify" }
+        ]
     }
 ];
-
-// Album Card Component
-const AlbumCard = ({ album }) => {
-    const [isPlaying, setIsPlaying] = useState(false);
-    const audioRef = useRef(null);
-
-    const togglePlay = () => {
-        if (!audioRef.current) return;
-        if (isPlaying) {
-            audioRef.current.pause();
-        } else {
-            audioRef.current.play();
-        }
-        setIsPlaying(!isPlaying);
-    };
-
-    useEffect(() => {
-        const audio = audioRef.current;
-        if (audio) {
-            audio.addEventListener('ended', () => setIsPlaying(false));
-            return () => audio.removeEventListener('ended', () => setIsPlaying(false));
-        }
-    }, []);
-
-    return (
-        <div className="group relative bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-            <div className="relative h-64 overflow-hidden">
-                <img src={album.image} alt={album.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-            <div className="p-6">
-                <h3 className="text-xl font-bold text-primary mb-2">{album.title}</h3>
-                <p className="text-gray-600 text-sm mb-4">{album.description}</p>
-                <button
-                    onClick={togglePlay}
-                    className="flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full mb-4 hover:bg-primary/20 transition-colors"
-                >
-                    {isPlaying ? <Pause size={16} /> : <Play size={16} />}
-                    <span className="text-sm font-medium">{isPlaying ? 'Pause' : 'Play Snippet'}</span>
-                </button>
-                <audio ref={audioRef} src={album.audioSrc} preload="none" />
-                <div className="flex flex-wrap gap-2">
-                    {album.links.spotify && (
-                        <a href={album.links.spotify} target="_blank" rel="noreferrer" className="px-3 py-1.5 border border-primary/30 text-primary rounded-full text-xs font-medium hover:bg-primary hover:text-white transition-colors">
-                            <i className="fab fa-spotify mr-1"></i> Spotify
-                        </a>
-                    )}
-                    {album.links.apple && (
-                        <a href={album.links.apple} target="_blank" rel="noreferrer" className="px-3 py-1.5 border border-primary/30 text-primary rounded-full text-xs font-medium hover:bg-primary hover:text-white transition-colors">
-                            <i className="fab fa-apple mr-1"></i> Apple
-                        </a>
-                    )}
-                </div>
-            </div>
-        </div>
-    );
-};
 
 // Countdown Component
 const Countdown = ({ targetDate }) => {
@@ -164,21 +106,13 @@ const HomePage = () => {
     return (
         <Layout>
             {/* Hero Section */}
-            <section className="relative h-screen min-h-[600px] flex items-center justify-center text-center text-white overflow-hidden">
-                <div className="absolute inset-0 z-0">
-                    <img src="/Assets/Pictures/Cover (2).jpg" alt="Worshipper's Praise Inc" className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-black/50" />
-                </div>
-                <div className="relative z-10 container mx-auto px-4">
-                    <ScrollReveal>
-                        <div className="bg-black/30 backdrop-blur-sm p-8 md:p-12 rounded-2xl max-w-3xl mx-auto">
-                            <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">Spreading the Gospel Through Music</h1>
-                            <p className="text-lg md:text-xl mb-8 drop-shadow-md opacity-90">Join us in our mission to bring souls to Christ through praise and worship.</p>
-                            <Link to="/about" className="inline-block px-8 py-3 bg-primary text-white font-bold rounded-full hover:bg-primary/90 transition-colors shadow-lg">Learn More</Link>
-                        </div>
-                    </ScrollReveal>
-                </div>
-            </section>
+            <Hero
+                title="Spreading the Gospel Through Music"
+                description="Join us in our mission to bring souls to Christ through praise and worship."
+                image="/Assets/Pictures/Cover (2).jpg"
+                buttonText="Learn More"
+                buttonLink="/about"
+            />
 
             {/* Who We Are */}
             <section className="py-20 bg-white">

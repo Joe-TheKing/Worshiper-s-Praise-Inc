@@ -1,6 +1,7 @@
 import { Download } from 'lucide-react';
 import Layout from '../components/layout/Layout';
 import ScrollReveal from '../components/ui/ScrollReveal';
+import Hero from '../components/ui/Hero';
 
 // Proposal data
 const proposals = [
@@ -21,17 +22,12 @@ const proposals = [
 const SponsorshipPage = () => {
     return (
         <Layout>
-            {/* Hero */}
-            <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center text-center text-white overflow-hidden">
-                <div className="absolute inset-0 z-0">
-                    <img src="/Assets/Pictures/Cover (6).jpg" alt="Sponsorship" className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-black/50" />
-                </div>
-                <div className="relative z-10 container mx-auto px-4">
-                    <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">Partner With Us</h1>
-                    <p className="text-lg md:text-xl opacity-90 drop-shadow-md">Support our mission to spread the Gospel through music.</p>
-                </div>
-            </section>
+            {/* Hero Section */}
+            <Hero
+                title="Partner With Us"
+                description="Support our mission to spread the Gospel through music."
+                image="/Assets/Pictures/Cover (6).jpg"
+            />
 
             {/* Sponsorship Proposals */}
             <section className="py-20 bg-gray-50">

@@ -25,6 +25,7 @@ const Navbar = () => {
         { name: 'About Us', path: '/about' },
         { name: 'Music', path: '/music' },
         { name: 'Events', path: '/events' },
+        { name: 'Gallery', path: '/gallery' },
         { name: 'Blog', path: '/blog' },
         { name: 'Training', path: '/training' },
         { name: 'Sponsorship', path: '/sponsorship' },

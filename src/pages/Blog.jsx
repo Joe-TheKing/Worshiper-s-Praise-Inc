@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Calendar, User, Search } from 'lucide-react';
 import Layout from '../components/layout/Layout';
 import ScrollReveal from '../components/ui/ScrollReveal';
+import Hero from '../components/ui/Hero';
 
 // Blog posts data
 const posts = [
@@ -33,17 +34,12 @@ const recentPosts = [
 const BlogPage = () => {
     return (
         <Layout>
-            {/* Hero */}
-            <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center text-center text-white overflow-hidden">
-                <div className="absolute inset-0 z-0">
-                    <img src="/Assets/Pictures/Cover (6).jpg" alt="Blog" className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-black/50" />
-                </div>
-                <div className="relative z-10 container mx-auto px-4">
-                    <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">Blog</h1>
-                    <p className="text-lg md:text-xl opacity-90 drop-shadow-md">Get the latest news, updates, and stories.</p>
-                </div>
-            </section>
+            {/* Hero Section */}
+            <Hero
+                title="Blog"
+                description="Get the latest news, updates, and stories."
+                image="/Assets/Pictures/Cover (6).jpg"
+            />
 
             {/* Blog Content */}
             <section className="py-20 bg-white">

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Layout from '../components/layout/Layout';
 import ScrollReveal from '../components/ui/ScrollReveal';
+import Hero from '../components/ui/Hero';
 
 // Training programs
 const programs = [
@@ -19,17 +20,12 @@ const programs = [
 const TrainingPage = () => {
     return (
         <Layout>
-            {/* Hero */}
-            <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center text-center text-white overflow-hidden">
-                <div className="absolute inset-0 z-0">
-                    <img src="/Assets/Pictures/Training (1).JPG" alt="Training" className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-black/50" />
-                </div>
-                <div className="relative z-10 container mx-auto px-4">
-                    <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">Training</h1>
-                    <p className="text-lg md:text-xl opacity-90 drop-shadow-md">Equipping and empowering the next generation of worshippers.</p>
-                </div>
-            </section>
+            {/* Hero Section */}
+            <Hero
+                title="Training"
+                description="Equipping and empowering the next generation of worshippers."
+                image="/Assets/Pictures/Training (1).JPG"
+            />
 
             {/* Training Programs */}
             <section className="py-20 bg-white">
