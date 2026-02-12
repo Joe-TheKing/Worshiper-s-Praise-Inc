@@ -65,7 +65,7 @@ const EventsPage = () => {
             <Hero
                 title="Events"
                 description="Join us for an unforgettable worship experience."
-                image="/Assets/Pictures/Events (1).jpg"
+                image="/Assets/Pictures/Events Cover.jpg"
             />
 
             {/* Upcoming Events */}
@@ -94,7 +94,7 @@ const EventsPage = () => {
                                         </div>
                                         <p className="text-gray-600 mb-6">{event.description}</p>
                                         <Countdown targetDate={event.targetDate} />
-                                        <Link to="/contact" className="inline-block mt-6 px-6 py-2.5 bg-primary text-white font-bold rounded-full hover:bg-primary/90 transition-colors">Get Tickets</Link>
+                                        <Link to="/contact" className="inline-block mt-6 px-6 py-2.5 bg-primary text-white font-bold rounded-full hover:bg-primary/90 transition-colors">Register</Link>
                                     </div>
                                 </div>
                             ))}

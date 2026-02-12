@@ -33,14 +33,14 @@ const aims = [
 
 // Chapters Data
 const chapters = [
-    { city: "Tamale", description: "We have a vibrant group of ministers in Tamale championing the course of the ministry. This includes various professionals and students. Being the first Chapter of WPI, it produced the earliest members of the ministry and currently has the largest numbers.", email: "tamale@wpighana.com" },
-    { city: "Wa", description: "Having started in 2020, the Wa Chapter has grown to become a notable ministry in the town. Just like in Tamale, it comprises members from various professions who will stop at nothing to ensure that they excel in the work of God while excelling in their professional fields.", email: "wa@wpighana.com" },
-    { city: "Accra", description: "The Accra chapter is the youngest of the ministry. As it is located in arguably the busiest city in the country, the members are aware of the magnitude of the task to lift Christ high, amidst the hustle and bustle that so easily captures the hearts and minds of people, including those who call upon the name of the Lord.", email: "accra@wpighana.com" },
+    { city: "Tamale", description: "We have a vibrant group of ministers in Tamale championing the course of the ministry. This includes various professionals and students. Being the first Chapter of WPI, it produced the earliest members of the ministry and currently has the largest numbers." },
+    { city: "Wa", description: "Having started in 2020, the Wa Chapter has grown to become a notable ministry in the town. Just like in Tamale, it comprises members from various professions who will stop at nothing to ensure that they excel in the work of God while excelling in their professional fields." },
+    { city: "Accra", description: "The Accra chapter is the youngest of the ministry. As it is located in arguably the busiest city in the country, the members are aware of the magnitude of the task to lift Christ high, amidst the hustle and bustle that so easily captures the hearts and minds of people, including those who call upon the name of the Lord." },
 ];
 
 // Basis of Faith
 const basisOfFaith = [
-    { title: "1. The Bible", content: "We believe that the Bible is the foundational guide for Christian living; it is as light shining in darkness; it is the surest word of prophecy. We believe that all scripture is giving by the inspiration of God and is profitable for doctrine, reproof, correction, and instruction in righteousness, for the purpose of perfecting God's people and equipping them with the necessary resources for purposeful and godly living. We also believe that God's word is eternal and unchanging. (II Timothy 3:16-17, II Peter1:19-21, Isaiah 40:8)" },
+    { title: "1. The Bible", content: "We believe that the Bible is the foundational guide for Christian living; it is as light shining in darkness; it is the surest word of prophecy. We believe that all scripture is given by the inspiration of God and is profitable for doctrine, reproof, correction, and instruction in righteousness, for the purpose of perfecting God's people and equipping them with the necessary resources for purposeful and godly living. We also believe that God's word is eternal and unchanging. (II Timothy 3:16-17, II Peter1:19-21, Isaiah 40:8)" },
     { title: "2. The One True God", content: "We believe in the one true triune God (One God, in three persons – Father, Son, and Spirit). (Psalm 90:2, Isaiah 46:9, Deuteronomy 6:4, Matthew 28:19)" },
     { title: "3. Man's depraved nature", content: "We believe that all men are born sinners and have fallen short of the glory of God. Men are, by nature, children of wrath and without God until they are saved by Jesus Christ. (Romans 3:23, Ephesians 2:1-3, 12)" },
     { title: "4. The Savior", content: "We believe that Jesus, the Son of God, was born in the flesh to save all mankind through his death, burial, and resurrection, and without Him, no one has access to the Father. (John 3:16, John14:6, Isaiah 9:6)" },
@@ -74,7 +74,7 @@ const AboutPage = () => {
             <Hero
                 title="About Us"
                 description="Learn more about our story, mission, and what we believe."
-                image="/Assets/Pictures/About Us (2).jpg"
+                image="/Assets/Pictures/About Us Cover.jpg"
             />
 
             {/* Our Story (Horizontal Timeline) */}
@@ -195,7 +195,6 @@ const AboutPage = () => {
                                     </div>
                                     <h3 className="text-2xl font-bold text-primary mb-4">{chapter.city}</h3>
                                     <p className="text-gray-600 text-sm mb-4">{chapter.description}</p>
-                                    <p className="text-sm"><strong>Contact:</strong> {chapter.email}</p>
                                 </div>
                             ))}
                         </div>

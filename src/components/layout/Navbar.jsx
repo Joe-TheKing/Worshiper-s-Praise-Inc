@@ -36,7 +36,7 @@ const Navbar = () => {
         <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-dark-gray shadow-lg py-2' : 'bg-transparent py-4'}`}>
             <div className="container mx-auto px-4 flex justify-between items-center">
                 <Link to="/" className="flex items-center gap-2 group">
-                    <img src="/Assets/Logo/wpi white.png" alt="WPI Logo" className="h-10 md:h-12 w-auto transition-transform group-hover:scale-110" />
+                    <img src="/Assets/Logo/WPI Logo cutout.png" alt="WPI Logo" className="h-10 md:h-12 w-auto transition-transform group-hover:scale-110" />
                     <span className="text-white font-bold text-base md:text-xl hidden sm:inline">Worshipper's Praise Inc</span>
                 </Link>
 

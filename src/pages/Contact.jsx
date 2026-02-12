@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MapPin, Mail, Phone } from 'lucide-react';
+import { MapPin, Mail, Phone, Facebook, Instagram, Youtube, Twitter } from 'lucide-react';
 import Layout from '../components/layout/Layout';
 import ScrollReveal from '../components/ui/ScrollReveal';
 import Hero from '../components/ui/Hero';
@@ -26,7 +26,7 @@ const ContactPage = () => {
             <Hero
                 title="Contact Us"
                 description="We'd love to hear from you. Let's connect."
-                image="/Assets/Pictures/Cover (2).jpg"
+                image="/Assets/Pictures/Contact Cover.png"
             />
 
             {/* Contact Section */}
@@ -118,19 +118,19 @@ const ContactPage = () => {
                                     <h4 className="font-semibold text-gray-800 mb-4">Follow Us</h4>
                                     <div className="flex gap-4">
                                         <a href="https://web.facebook.com/wpighana" target="_blank" rel="noreferrer" className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
-                                            <i className="fab fa-facebook-f"></i>
+                                            <Facebook size={20} />
                                         </a>
                                         <a href="https://www.instagram.com/wpighana" target="_blank" rel="noreferrer" className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
-                                            <i className="fab fa-instagram"></i>
+                                            <Instagram size={20} />
                                         </a>
                                         <a href="https://www.youtube.com/@wpighana" target="_blank" rel="noreferrer" className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
-                                            <i className="fab fa-youtube"></i>
+                                            <Youtube size={20} />
                                         </a>
                                         <a href="https://www.tiktok.com/@wpighana" target="_blank" rel="noreferrer" className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
-                                            <i className="fab fa-tiktok"></i>
+                                            <i className="fab fa-tiktok text-lg"></i>
                                         </a>
                                         <a href="https://x.com/wpighana" target="_blank" rel="noreferrer" className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
-                                            <i className="fab fa-twitter"></i>
+                                            <Twitter size={20} />
                                         </a>
                                     </div>
                                 </div>

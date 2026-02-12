@@ -38,7 +38,7 @@ const BlogPage = () => {
             <Hero
                 title="Blog"
                 description="Get the latest news, updates, and stories."
-                image="/Assets/Pictures/Cover (6).jpg"
+                image="/Assets/Pictures/Home Cover.jpg"
             />
 
             {/* Blog Content */}

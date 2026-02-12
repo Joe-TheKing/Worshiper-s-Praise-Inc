@@ -26,8 +26,42 @@ const SponsorshipPage = () => {
             <Hero
                 title="Partner With Us"
                 description="Support our mission to spread the Gospel through music."
-                image="/Assets/Pictures/Cover (6).jpg"
+                image="/Assets/Pictures/Home Cover.jpg"
             />
+
+            {/* Donate Section */}
+            <section className="py-20 bg-white">
+                <div className="container mx-auto px-4 max-w-4xl text-center">
+                    <ScrollReveal>
+                        <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">Support Our Ministry</h2>
+                        <p className="text-gray-600 mb-10 max-w-2xl mx-auto">
+                            Your generous donations help us continue our mission of spreading the Gospel through music and organizing impactful events.
+                        </p>
+
+                        <div className="grid md:grid-cols-2 gap-8">
+                            <div className="p-8 rounded-2xl bg-gray-50 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                                <h3 className="text-xl font-bold text-primary mb-4">Bank Transfer</h3>
+                                <div className="space-y-2 text-gray-600">
+                                    <p><span className="font-semibold">Bank:</span> [Bank Name]</p>
+                                    <p><span className="font-semibold">Account Name:</span> Worshipper's Praise Inc.</p>
+                                    <p><span className="font-semibold">Account Number:</span> [Account Number]</p>
+                                    <p><span className="font-semibold">Branch:</span> [Branch Name]</p>
+                                </div>
+                            </div>
+
+                            <div className="p-8 rounded-2xl bg-gray-50 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                                <h3 className="text-xl font-bold text-primary mb-4">Mobile Money</h3>
+                                <div className="space-y-2 text-gray-600">
+                                    <p><span className="font-semibold">Network:</span> MTN / Vodafone / AirtelTigo</p>
+                                    <p><span className="font-semibold">Name:</span> Worshipper's Praise Inc.</p>
+                                    <p><span className="font-semibold">Number:</span> [Momo Number]</p>
+                                    <p className="text-sm italic mt-2 text-gray-500">* Please use "Donation" as reference</p>
+                                </div>
+                            </div>
+                        </div>
+                    </ScrollReveal>
+                </div>
+            </section>
 
             {/* Sponsorship Proposals */}
             <section className="py-20 bg-gray-50">
@@ -43,13 +77,23 @@ const SponsorshipPage = () => {
                                     </div>
                                     <div className="p-6">
                                         <h3 className="text-xl font-bold text-primary mb-4">{proposal.title}</h3>
-                                        <a
-                                            href={proposal.downloadUrl}
-                                            download
-                                            className={`inline-flex items-center gap-2 px-5 py-2.5 font-semibold rounded-full transition-colors ${proposal.buttonStyle}`}
-                                        >
-                                            <Download size={18} /> Read Proposal
-                                        </a>
+                                        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                                            <a
+                                                href={proposal.downloadUrl}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                className={`inline-flex items-center justify-center gap-2 px-5 py-2.5 font-semibold rounded-full transition-colors ${proposal.buttonStyle}`}
+                                            >
+                                                Read Online
+                                            </a>
+                                            <a
+                                                href={proposal.downloadUrl}
+                                                download
+                                                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 font-semibold rounded-full transition-colors border border-gray-200 text-gray-600 hover:bg-gray-50 hover:text-primary"
+                                            >
+                                                <Download size={18} /> Download
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             ))}

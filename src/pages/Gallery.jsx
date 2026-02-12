@@ -15,8 +15,8 @@ const GalleryPage = () => {
 
     // Dynamic albums based on data
     const albums = useMemo(() => {
-        const uniqueAlbums = ['All', ...new Set(galleryImages.map(img => img.album))];
-        return uniqueAlbums;
+        const uniqueAlbums = [...new Set(galleryImages.map(img => img.album))].sort();
+        return ['All', ...uniqueAlbums];
     }, []);
 
     // Filtered images
@@ -68,7 +68,7 @@ const GalleryPage = () => {
             <Hero
                 title="Our Ministry Gallery"
                 description="Capturing moments of worship, fellowship, and the powerful move of God through our various ministry events."
-                image="/Assets/Pictures/Cover (2).jpg"
+                image="/Assets/Pictures/Gallery Cover.png"
             />
 
             {/* Filter Bar */}

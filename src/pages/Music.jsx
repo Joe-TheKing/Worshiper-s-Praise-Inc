@@ -49,7 +49,7 @@ const MusicPage = () => {
             <Hero
                 title="Our Music"
                 description="Explore our collection of albums and songs."
-                image="/Assets/Pictures/Cover (5).jpg"
+                image="/Assets/Pictures/Music Cover.jpg"
             />
 
             {/* Discography */}

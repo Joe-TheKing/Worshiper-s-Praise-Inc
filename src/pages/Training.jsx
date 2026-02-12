@@ -8,7 +8,7 @@ const programs = [
     {
         title: "Worshipper's Praise Zera",
         description: "Train up a child in the way he should go: and when he is old, he will not depart from it (KJV). Worshipper's Praise Zera is here to train children and youth to grow up with the principles of God's word regarding the Christian walk and ministry.",
-        image: "/Assets/Pictures/Training (1).JPG"
+        image: "/Assets/Pictures/Training (1).jpg"
     },
     {
         title: "School of Worshippers (SOW)",
@@ -24,7 +24,7 @@ const TrainingPage = () => {
             <Hero
                 title="Training"
                 description="Equipping and empowering the next generation of worshippers."
-                image="/Assets/Pictures/Training (1).JPG"
+                image="/Assets/Pictures/Training Cover.JPG"
             />
 
             {/* Training Programs */}
