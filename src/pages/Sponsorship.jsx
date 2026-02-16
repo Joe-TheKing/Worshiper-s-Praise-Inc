@@ -38,27 +38,14 @@ const SponsorshipPage = () => {
                             Your generous donations help us continue our mission of spreading the Gospel through music and organizing impactful events.
                         </p>
 
-                        <div className="grid md:grid-cols-2 gap-8">
-                            <div className="p-8 rounded-2xl bg-gray-50 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                                <h3 className="text-xl font-bold text-primary mb-4">Bank Transfer</h3>
-                                <div className="space-y-2 text-gray-600">
-                                    <p><span className="font-semibold">Bank:</span> [Bank Name]</p>
-                                    <p><span className="font-semibold">Account Name:</span> Worshipper's Praise Inc.</p>
-                                    <p><span className="font-semibold">Account Number:</span> [Account Number]</p>
-                                    <p><span className="font-semibold">Branch:</span> [Branch Name]</p>
-                                </div>
-                            </div>
-
-                            <div className="p-8 rounded-2xl bg-gray-50 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                                <h3 className="text-xl font-bold text-primary mb-4">Mobile Money</h3>
-                                <div className="space-y-2 text-gray-600">
-                                    <p><span className="font-semibold">Network:</span> MTN / Vodafone / AirtelTigo</p>
-                                    <p><span className="font-semibold">Name:</span> Worshipper's Praise Inc.</p>
-                                    <p><span className="font-semibold">Number:</span> [Momo Number]</p>
-                                    <p className="text-sm italic mt-2 text-gray-500">* Please use "Donation" as reference</p>
-                                </div>
-                            </div>
-                        </div>
+                        <a
+                            href="https://paystack.shop/pay/donate_worshipperspraiseinc"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-block px-10 py-5 bg-primary text-white text-xl font-bold rounded-full shadow-lg hover:bg-primary/90 hover:scale-105 transition-all duration-300"
+                        >
+                            Donate Securely Now
+                        </a>
                     </ScrollReveal>
                 </div>
             </section>

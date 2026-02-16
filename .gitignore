@@ -24,3 +24,4 @@ legacy-html/
 *.njsproj
 *.sln
 *.sw?
+.vercel
