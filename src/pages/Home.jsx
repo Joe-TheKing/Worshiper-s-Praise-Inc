@@ -184,9 +184,29 @@ const HomePage = () => {
                     <ScrollReveal>
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">Subscribe to our Newsletter</h2>
                         <p className="opacity-80 mb-8">Stay updated with events, music, and resources.</p>
-                        <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                            <input type="email" placeholder="Enter your email" className="flex-1 px-4 py-3 bg-white text-black rounded-full focus:outline-none focus:ring-2 focus:ring-primary" />
-                            <button type="submit" className="px-6 py-3 bg-tertiary text-white font-bold rounded-full hover:bg-tertiary/90 transition-colors">Subscribe</button>
+                        <form
+                            action="https://app.kit.com/forms/9098152/subscriptions"
+                            method="post"
+                            className="seva-form formkit-form flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
+                            data-sv-form="9098152"
+                            data-uid="4181c06bc6"
+                            data-format="inline"
+                            data-version="5"
+                        >
+                            <input
+                                type="email"
+                                name="email_address"
+                                placeholder="Enter your email"
+                                required
+                                className="formkit-input flex-1 px-4 py-3 bg-white text-black rounded-full focus:outline-none focus:ring-2 focus:ring-primary"
+                            />
+                            <button
+                                type="submit"
+                                data-element="submit"
+                                className="formkit-submit px-6 py-3 bg-tertiary text-white font-bold rounded-full hover:bg-tertiary/90 transition-colors"
+                            >
+                                Subscribe
+                            </button>
                         </form>
                     </ScrollReveal>
                 </div>

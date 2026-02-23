@@ -14,7 +14,7 @@ const proposals = [
     {
         title: "Organizational Sponsorship",
         image: "/Assets/Sponsorship Proposals/SPONSORSHIP proposal_pages-to-jpg-0001.jpg",
-        downloadUrl: "/Assets/Sponsorship Proposals/Sponsorship proposal.pdf",
+        downloadUrl: "/Assets/Sponsorship Proposals/SPONSORSHIP proposal.pdf",
         buttonStyle: "bg-primary/10 text-primary hover:bg-primary/20"
     }
 ];
