@@ -6,19 +6,30 @@ import ScrollReveal from './ScrollReveal';
 // All cover images for the slideshow
 const ALL_COVERS = [
   '/Assets/Pictures/Home Cover.jpg',
+  '/Assets/Gallery/2026 - Return/HEM2528.jpg',
   '/Assets/Pictures/About Us Cover.jpg',
+  '/Assets/Gallery/2026 - Return/HEM2449.jpg',
   '/Assets/Pictures/Contact Cover.png',
+  '/Assets/Gallery/2026 - Return/HEM2517-2.jpg',
   '/Assets/Pictures/Events Cover.jpg',
   '/Assets/Pictures/Gallery Cover.png',
   '/Assets/Pictures/Music Cover.jpg',
   '/Assets/Pictures/Training Cover.JPG',
 ];
 
-const Hero = ({ title, description, image, buttonText, buttonLink }) => {
+const Hero = ({ title, description, image, images, buttonText, buttonLink }) => {
+  // Use custom images if provided, otherwise default to ALL_COVERS
+  const baseImages = images && images.length > 0 ? images : ALL_COVERS;
+
   // If a specific image is passed, make it the first one, then filter it out from the rest to avoid duplicates
-  const heroImages = image ? [image, ...ALL_COVERS.filter((img) => img !== image)] : ALL_COVERS;
+  const heroImages = image ? [image, ...baseImages.filter((img) => img !== image)] : baseImages;
 
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Reset index if initial image changes
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [image]);
 
   useEffect(() => {
     const interval = setInterval(() => {
